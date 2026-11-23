@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Konfirmasi Usia 18+</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#101827;color:#f8fafc;font-family:Arial,sans-serif}
+main{width:min(100%,440px);padding:34px 28px;text-align:center;background:#1d293b;border:1px solid #34445d;border-radius:18px}
+.mark{width:76px;height:76px;margin:0 auto 18px;border:2px solid #fbbf24;border-radius:50%;display:grid;place-items:center;color:#fbbf24;font-size:28px;font-weight:800}
+h1{font-size:25px;margin:0 0 12px}
+p{color:#cbd5e1;line-height:1.6;margin:0 0 24px}
+button{display:block;width:100%;padding:14px 18px;border:0;border-radius:10px;background:#166534;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+#status{display:none;margin-top:20px;color:#fbbf24;font-weight:700}
+#count{font-size:32px;display:block;margin-top:6px}
+.note{font-size:12px;color:#94a3b8;margin-top:16px}
+</style>
+</head>
+<body>
+<main>
+<div class="mark">18+</div>
+<h1>Konfirmasi Usia</h1>
+<p>Dengan melanjutkan, Anda menyatakan bahwa Anda telah berusia 18 tahun atau lebih.</p>
+<button id="confirm" type="button">SAYA BERUSIA 18+</button>
+<div id="status" role="status" aria-live="polite">
+  Melanjutkan ke permainan dalam
+  <span id="count">3</span>
+</div>
+<p class="note">Jika Anda belum berusia 18 tahun, silakan tutup halaman ini.</p>
+</main>
+<script>
+const button = document.getElementById("confirm");
+const status = document.getElementById("status");
+const count = document.getElementById("count");
+button.addEventListener("click", () => {
+  button.disabled = true;
+  button.style.display = "none";
+  status.style.display = "block";
+  let seconds = 3;
+  count.textContent = seconds;
+  const timer = setInterval(() => {
+    seconds -= 1;
+    count.textContent = seconds;
+    if (seconds <= 0) {
+      clearInterval(timer);
+      window.location.href = "https://athena.jawa11istimewa.com/";
+    }
+  }, 1000);
+});
+</script>
+</body>
+</html>
